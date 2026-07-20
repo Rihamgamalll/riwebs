@@ -77,8 +77,8 @@ export default function Home() {
     target: heroRef,
     offset: ['start start', 'end start'],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '14%']);
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.03, 1.12]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
 
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function Home() {
       {/* Full-bleed luxury hero */}
       <section
         ref={heroRef}
-        className="relative w-screen left-1/2 -translate-x-1/2 h-screen overflow-hidden bg-[#1a1a1a]"
+        className="relative w-screen left-1/2 -translate-x-1/2 h-[100svh] min-h-[640px] md:h-screen md:min-h-[700px] overflow-hidden bg-[#1a1a1a]"
       >
         {/* Cinematic image layer */}
         <motion.div
@@ -141,7 +141,7 @@ export default function Home() {
           <img
             src={heroImage}
             alt="Editorial skincare model applying cream"
-            className="absolute inset-0 w-full h-full object-cover object-[center_18%] scale-105"
+            className="absolute inset-0 w-full h-full object-cover object-[72%_center] sm:object-[66%_center] md:object-[center_18%] scale-[1.02] md:scale-105"
             loading="eager"
             fetchPriority="high"
           />
