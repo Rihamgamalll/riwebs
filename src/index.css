@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-nude-50 text-nude-800 font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-blush-400 text-white rounded-full font-medium transition-all duration-300 hover:bg-blush-500 hover:shadow-premium active:scale-95;
+  }
+  .btn-secondary {
+    @apply px-6 py-3 bg-blush-100 text-blush-700 rounded-full font-medium transition-all duration-300 hover:bg-blush-200 hover:shadow-soft active:scale-95;
+  }
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-nude-200 text-nude-800 rounded-full font-medium transition-all duration-300 hover:bg-blush-50 hover:border-blush-300 active:scale-95;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-soft hover:shadow-premium transition-all duration-500 overflow-hidden border border-nude-200/60;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-nude-200 bg-white text-nude-800 placeholder-nude-400 focus:outline-none focus:ring-2 focus:ring-blush-300 focus:border-transparent transition-all duration-200;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-serif font-light text-nude-800 tracking-wide;
+  }
+  .glass {
+    @apply bg-white/60 backdrop-blur-md border border-white/40 shadow-glass;
+  }
+  .logo-mark {
+    @apply inline-flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-blush-300 to-blush-500 text-white font-serif font-semibold text-sm tracking-wider shadow-soft;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFDFD;
+}
+::-webkit-scrollbar-thumb {
+  background: #FEC5D8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F58EA8;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
