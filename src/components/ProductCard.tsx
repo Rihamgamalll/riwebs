@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Star, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import type { Product } from '../types';
 import {
@@ -19,15 +19,7 @@ interface Props {
 export default function ProductCard({ product, imageUrl }: Props) {
   const { addItem } = useCart();
   const navigate = useNavigate();
-
   const [added, setAdded] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageFailed, setImageFailed] = useState(false);
-
-  useEffect(() => {
-    setImageLoaded(false);
-    setImageFailed(false);
-  }, [imageUrl]);
 
   const effectivePrice = getEffectivePrice(
     product.price,
@@ -46,8 +38,6 @@ export default function ProductCard({ product, imageUrl }: Props) {
   const isNewArrival = Boolean(product.is_new_arrival);
   const isBestSeller = Boolean(product.is_best_seller);
 
-  const hasValidImage = Boolean(imageUrl) && !imageFailed;
-
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -60,12 +50,12 @@ export default function ProductCard({ product, imageUrl }: Props) {
       slug: product.slug,
       price: effectivePrice,
       quantity: 1,
-      image_url: imageFailed ? undefined : imageUrl,
+      image_url: imageUrl,
       stock: product.stock,
     });
 
     setAdded(true);
-    window.setTimeout(() => setAdded(false), 1200);
+    setTimeout(() => setAdded(false), 1200);
   };
 
   const handleBuyNow = (e: React.MouseEvent) => {
@@ -80,7 +70,7 @@ export default function ProductCard({ product, imageUrl }: Props) {
       slug: product.slug,
       price: effectivePrice,
       quantity: 1,
-      image_url: imageFailed ? undefined : imageUrl,
+      image_url: imageUrl,
       stock: product.stock,
     });
 
@@ -98,33 +88,17 @@ export default function ProductCard({ product, imageUrl }: Props) {
         className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-nude-200/80 bg-white shadow-soft transition-all duration-500 hover:border-blush-200 hover:shadow-2xl"
       >
         <div className="relative aspect-square overflow-hidden bg-blush-50">
-          {/* Stable placeholder: shown while loading or whenever the image URL fails. */}
-          <div
-            className={`absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blush-50 to-nude-100 transition-opacity duration-300 ${
-              !hasValidImage || !imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            aria-hidden="true"
-          >
-            <ShoppingBag className="h-12 w-12 text-nude-300" />
-          </div>
-
-          {hasValidImage && (
+          {imageUrl ? (
             <img
-              key={imageUrl}
               src={imageUrl}
               alt={product.name}
-              className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-110 ${
-                imageLoaded ? 'opacity-100' : 'opacity-0'
-              }`}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               loading="lazy"
-              decoding="async"
-              onLoad={() => setImageLoaded(true)}
-              onError={(event) => {
-                event.currentTarget.onerror = null;
-                setImageLoaded(false);
-                setImageFailed(true);
-              }}
             />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-nude-300">
+              <ShoppingBag className="h-12 w-12" />
+            </div>
           )}
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
