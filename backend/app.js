@@ -24,14 +24,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS
+const allowedOrigins = [
+  'https://riwebs.vercel.app',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (
-        !origin ||
-        /^http:\/\/localhost:\d+$/.test(origin) ||
-        /^http:\/\/127\.0\.0\.1:\d+$/.test(origin)
-      ) {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
