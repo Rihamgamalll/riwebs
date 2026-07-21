@@ -73,7 +73,7 @@ export default function Register() {
             className="mb-5 inline-flex items-center justify-center gap-3"
           >
             <img
-              src="/logo.png"
+              src="/logo.jpg"
               alt="RiWebs"
               className="h-12 w-12 rounded-full object-contain shadow-soft"
             />
