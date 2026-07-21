@@ -98,7 +98,7 @@ export default function Checkout() {
       const whatsappNumber = '201013290912';
 
       const orderMessage = `
-New Order - Riham's Beauty
+New Order - RiWebs
 
 Order Number: ${data.order_number}
 
@@ -269,7 +269,7 @@ Payment Method: ${
                   onChange={handleChange}
                   required
                   className="input-field"
-                  placeholder="Riham Gamal"
+                  placeholder="RiWebs"
                 />
               </div>
 
