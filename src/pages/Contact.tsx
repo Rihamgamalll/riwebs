@@ -163,7 +163,7 @@ export default function Contact() {
                 required
                 autoComplete="name"
                 className="input-field"
-                placeholder="Riham Gamal"
+                placeholder="RiWebs"
               />
             </div>
 
