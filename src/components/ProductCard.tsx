@@ -89,19 +89,12 @@ export default function ProductCard({ product, imageUrl }: Props) {
       >
         <div className="relative aspect-square overflow-hidden bg-blush-50">
           {imageUrl ? (
-           <img
-           src={imageUrl}
-           alt={product.name}
-           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-           loading="eager"
-           decoding="async"
-           referrerPolicy="no-referrer"
-           onError={(e) => {
-             e.currentTarget.onerror = null;
-             e.currentTarget.src =
-               "https://placehold.co/600x600/F8F1EF/8B6F66?text=Beauty+Product";
-           }}
-         />
+            <img
+              src={imageUrl}
+              alt={product.name}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              loading="lazy"
+            />
           ) : (
             <div className="flex h-full w-full items-center justify-center text-nude-300">
               <ShoppingBag className="h-12 w-12" />
