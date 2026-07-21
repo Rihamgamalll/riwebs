@@ -97,8 +97,8 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          transparentMode
+          className={`${isHomePage ? 'absolute' : 'relative'} top-0 left-0 right-0 z-50 transition-all duration-500 ${
+            transparentMode
             ? 'bg-transparent border-b border-transparent shadow-none'
             : 'bg-white/90 backdrop-blur-xl border-b border-nude-200/80 shadow-sm'
         }`}
