@@ -161,7 +161,7 @@ export default function ProductDetails() {
   const fbt = similar.slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
       <nav className="text-sm text-nude-400 mb-6">
         <Link to="/" className="hover:text-blush-500">Home</Link>
         <span className="mx-2">/</span>
